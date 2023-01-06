@@ -55,8 +55,8 @@ const basket = [
 
 function addBasket(id, amount) {
 
-  let resultGoods = goods.findIndex(goods => goods.id == id);
-  let resultBasket = basket.findIndex(basket => basket.good == goods[resultGoods]);
+  let resultGoods = goods.findIndex(goods => goods.id === id);
+  let resultBasket = basket.findIndex(basket => basket.good === goods[resultGoods]);
 
   if (goods[resultGoods].available && resultBasket === -1) {
     basket.push(
@@ -108,7 +108,6 @@ addBasket(5, 3)
 addBasket(1, 15)
 console.log(basket)
 console.log(totalBasket())
-// console.log(basket)
 console.log("________________________")
 delBasket(0)
 console.log(basket)
