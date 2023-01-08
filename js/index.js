@@ -12,7 +12,7 @@ const goods = [
     name: "Спортивные толстовки",
     description: "Теплая толстовка с капюшоном",
     sizes: ["XS", "S", "M", "L"],
-    price: 1999,
+    price: 2000,
     available: true,
   },
   {
@@ -89,17 +89,16 @@ function delAllBasket() {
 
 
 function totalBasket() {
-  let totalAmount = 0;
-  let totalSumm = 0;
+  let totalAmount = [];
+  let totalSum = [];
   for (let i = 0; i < basket.length; i++) {
-    totalAmount += +basket[i].amount;
-    totalSumm += +basket[i].good.price
+    totalAmount.push(basket[i].amount);
+    totalSum.push(basket[i].good.price * basket[i].amount);
   }
-  let total = {
-    "totalAmount": totalAmount,
-    "totalSumm": totalSumm * totalAmount,
+  return {
+    "totalAmount": totalAmount.reduce((acc, item) => acc + item, 0),
+    "totalSumm": totalSum.reduce((acc, item) => acc + item, 0),
   };
-  return total
 }
 
 
@@ -107,6 +106,7 @@ addBasket(2, 15)
 addBasket(5, 3)
 addBasket(1, 15)
 console.log(basket)
+console.log('_________________')
 console.log(totalBasket())
 console.log("________________________")
 delBasket(0)
